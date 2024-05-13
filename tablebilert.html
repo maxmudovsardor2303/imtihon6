@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylr.css">
+    <title>Another Page</title>
+    <style>
+        #savedData ul {
+            padding: 0;
+            margin-top: 20px; /* Add margin between list and table */
+        }
+        #savedData ul li {
+            list-style-type: none;
+            margin-bottom: 20px; 
+        }
+
+        /* Style for table */
+        #savedData table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #savedData th, #savedData td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        #savedData th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div id="savedData"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var savedDataContainer = document.getElementById('savedData');
+            var savedData = JSON.parse(sessionStorage.getItem('formData'));
+
+            if (savedData && savedData.length > 0) {
+                var table = document.createElement('table');
+                
+                var thead = document.createElement('thead');
+                var headerRow = document.createElement('tr');
+                var headers = ['qayerdan', 'Input 2', 'Input 3', 'Input 4', 'Input 5', 'Input 6'];
+
+                headers.forEach(function(headerText) {
+                    var th = document.createElement('th');
+                    th.textContent = headerText;
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                var tbody = document.createElement('tbody');
+                var dataRow = document.createElement('tr');
+                
+                savedData.forEach(function(item) {
+                    var td = document.createElement('td');
+                    td.textContent = item;
+                    dataRow.appendChild(td);
+                });
+                tbody.appendChild(dataRow);
+                table.appendChild(tbody);
+
+                savedDataContainer.appendChild(table);
+            } else {
+                savedDataContainer.textContent = 'No saved data found.';
+            }
+        });
+    </script>
+</body>
+</html>

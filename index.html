@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylr.css">
+    <title>Airways</title>
+</head>
+
+<body>
+    <div class="air">
+        <h1>Belit sotib olish</h1>
+        <div class="flex">
+            <p>
+                Chipta sotib olish
+            </p>
+            <p>
+                Ruyxatdan o'tish
+            </p>
+            <p>
+                Ma'lumotlar
+            </p>
+            <p>
+                Mexmonhona bron qilish
+            </p>
+            <p>
+                Avtomabil olish
+            </p>
+            <p>
+                Sug'irta
+            </p>
+        </div>
+        <form id="myForm">
+            <input type="text" id="Qayerdan" placeholder="Qayerdan">
+            <input type="text" id="Qayerga" placeholder="Qayerga">
+            <input type="date" id="Sana">
+            <input type="text" id="Narxi" placeholder="Narxi">
+            <input type="text" id="Turi" placeholder="Turi">
+            <input type="Yulovchilar" id="Yulovchilar" placeholder="Yulovchilar">
+        </form>
+        <button type="submit" onclick="addToList()" id="submit">Sotib olish</button>
+    </div>
+
+    <script>
+        function addToList() {
+            var inputs = document.querySelectorAll('#myForm input');
+            var data = [];
+
+            inputs.forEach(function (input) {
+                data.push(input.value);
+            });
+            sessionStorage.setItem('formData', JSON.stringify(data));
+            window.location.href = 'tablebilert.html';
+        }
+    </script>
+</body>
+
+</html>
